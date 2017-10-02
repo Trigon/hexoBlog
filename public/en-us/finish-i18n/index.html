@@ -1,0 +1,657 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="吴以伦, trigon, Pascal" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="SummaryWe know, Hexo has i18n function, however it just works for the links in the layout, such as home tags and so on.There isn’t a simple way to show the same post in different languages.This passag">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A simple way realize multi-language in Hexo">
+<meta property="og:url" content="http://trigon.me/en-us/finish-i18n/index.html">
+<meta property="og:site_name" content="Trigon's Blog">
+<meta property="og:description" content="SummaryWe know, Hexo has i18n function, however it just works for the links in the layout, such as home tags and so on.There isn’t a simple way to show the same post in different languages.This passag">
+<meta property="og:updated_time" content="2016-09-06T01:51:48.084Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="A simple way realize multi-language in Hexo">
+<meta name="twitter:description" content="SummaryWe know, Hexo has i18n function, however it just works for the links in the layout, such as home tags and so on.There isn’t a simple way to show the same post in different languages.This passag">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://trigon.me/en-us/finish-i18n/"/>
+
+  <title> A simple way realize multi-language in Hexo | Trigon's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn,en-us,default">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Trigon's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">A proficient traveler leaves <br> no evidence of his journey.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            TimeLine
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-lang">
+          <a href="/en-us/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            切换到中文
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                A simple way realize multi-language in Hexo
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T20:24:08-04:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>We know, Hexo has i18n function, however it just works for the links in the layout, such as home tags and so on.<br>There isn’t a simple way to show the same post in different languages.<br>This passage show how to make post be i18n by changing config, post, layout and copying&amp;pasting.<br><a id="more"></a></p>
+<h1 id="I18N-in-Interface"><a href="#I18N-in-Interface" class="headerlink" title="I18N in Interface"></a>I18N in Interface</h1><h2 id="Change-config-yml"><a href="#Change-config-yml" class="headerlink" title="Change _config.yml"></a>Change <code>_config.yml</code></h2><p>Change <code>language:</code> to<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">language:</div><div class="line">- First lang</div><div class="line">- Other lang1</div><div class="line">- Other lang2</div><div class="line">...</div></pre></td></tr></table></figure><br>such as<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">language:</div><div class="line">- en-us</div><div class="line">- zh-cn</div></pre></td></tr></table></figure></p>
+<h2 id="Change-post"><a href="#Change-post" class="headerlink" title="Change post"></a>Change post</h2><p>Open <code>/_config.yml</code> and find<br><code>new_post_name</code>. Change it to<br><code>:lang/:title.md</code><br>Then each time when we creat a new post, endclose <code>--lang</code> which lang is en-us, zh-cn and so on.<br>After this step, the address of the post should be <code>lang/title.md</code><br>So every post will be created under the languages folder. Then hexo will detect the language in the url and change the language in the website.<br><em>Now when we click posts in different language, we will see the website with the same language as post.</em></p>
+<h2 id="Change-the-languages-files-under-languages"><a href="#Change-the-languages-files-under-languages" class="headerlink" title="Change the languages files under /languages"></a>Change the languages files under <code>/languages</code></h2><p>Althought most of pages are other languages, but the subtitle is also the same as orginal. So we need to change language files.<br><em>I will take theme <code>NexT</code> as example, the lang file is <code>zh-cn</code></em><br>The subtitle in NexT comes from the <code>subtitle</code> in <code>\_config.yml</code>. Open<code>\theme\next\layout\_partials\header.swig</code> and find the line<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p class=&quot;site-subtitle&quot;&gt;  </div></pre></td></tr></table></figure><br>Change the thing in brace into <code>__(&#39;sidebar.sub&#39;)</code>. Then add <code>sub</code> into <code>sidebar</code> of the lang file. The value is the translation of your subtitle. The name of the site can be also replaced by this method.<br><em>Now the layout of website can totally show another language.</em></p>
+<h2 id="Add-the-website-of-tags-and-categories-of-other-languages"><a href="#Add-the-website-of-tags-and-categories-of-other-languages" class="headerlink" title="Add the website of tags and categories of other languages"></a>Add the website of tags and categories of other languages</h2><p>This step is simpler. Create the folder with the name which is same as language. Then copy <code>categories</code> and <code>tags</code> from source to the new folder.<br><em>It doesn’t work for archives and homepage.</em></p>
+<p>Copy <code>/public/index.html</code> and <code>/public/archives</code> to <code>/source/(lang)</code>. Also add<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">layout: false</div><div class="line">---</div></pre></td></tr></table></figure><br>above two html files we just copied.<br>Finally, change <code>menu</code> <code>_config.yml</code>and <code>index.swig</code> under <code>layout</code> in ‘theme’ back to the original language and ‘hexo g’ again.</p>
+<h1 id="Only-show-the-posts-in-certain-language"><a href="#Only-show-the-posts-in-certain-language" class="headerlink" title="Only show the posts in certain language"></a>Only show the posts in certain language</h1><p><em>This method is stupid. If anyone has a better method, please let me know</em><br><em>I use theme <code>NexT</code> as a example</em></p>
+<h2 id="Change-posts-list"><a href="#Change-posts-list" class="headerlink" title="Change posts list"></a>Change posts list</h2><p>Open <code>index.swig</code> under <code>layout</code> of <code>theme</code>. Find a for under <code>block content</code>, add phrase above <code>post_template.render(post,true)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% if post.lang === &apos;zh-cn&apos; %&#125;  </div></pre></td></tr></table></figure><br>Then the list on the homepage will only show the posts whose lang is Chinese. To show English posts, change it to <code>en-us</code>.</p>
+<p>So why I said this is a stupid method? I don’t know why noone can reach page.posts except the homepage. So I just use this way to generate some homepages in different languages.<br>TAT so sad!</p>
+<h2 id="Change-prev-and-next-of-post"><a href="#Change-prev-and-next-of-post" class="headerlink" title="Change prev and next of post"></a>Change prev and next of post</h2><p>Open <code>\themes\next\layout\_macro\post.swig</code> and find <code>&lt;div class="post-nav"&gt; (At about line 215 )</code>.<br>Change it into<br><figure class="highlight html"><figcaption><span>post.swig</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-nav"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-nav-next post-nav-item"</span>&gt;</span></div><div class="line">&#123;% if post.next and post.next.lang === post.lang %&#125;</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for(post.next.path) &#125;&#125;"</span> <span class="attr">rel</span>=<span class="string">"next"</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; post.next.title &#125;&#125;"</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-chevron-left"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> &#123;&#123; post.next.title &#125;&#125;</div><div class="line">           <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span> &#123;&#123;post.lang&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">&#123;% else %&#125;</div><div class="line">	&#123;% set next_post = post.next %&#125;</div><div class="line">	&#123;% if next_post.next and next_post.next.lang === post.lang  %&#125;</div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for(next_post.next.path) &#125;&#125;"</span> <span class="attr">rel</span>=<span class="string">"next"</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; post.next.title &#125;&#125;"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-chevron-left"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> &#123;&#123; next_post.next.title &#125;&#125;</div><div class="line">	<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	&#123;% endif %&#125;</div><div class="line">&#123;% endif %&#125;</div><div class="line">       <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-nav-prev post-nav-item"</span>&gt;</span></div><div class="line">         &#123;% if post.prev and post.prev.lang === post.lang %&#125;</div><div class="line">           <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for(post.prev.path) &#125;&#125;"</span> <span class="attr">rel</span>=<span class="string">"prev"</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; post.prev.title &#125;&#125;"</span>&gt;</span></div><div class="line">             &#123;&#123;post.prev.title&#125;&#125; <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-chevron-right"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">           <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">&#123;% else %&#125;</div><div class="line">	&#123;% set prev_post = post.prev %&#125;</div><div class="line">	&#123;% if prev_post.prev and prev_post.prev.lang === post.lang %&#125;</div><div class="line">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for(prev_post.prev.path) &#125;&#125;"</span> <span class="attr">rel</span>=<span class="string">"prev"</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; post.prev.title &#125;&#125;"</span>&gt;</span></div><div class="line">		&#123;&#123;prev_post.prev.title&#125;&#125; <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-chevron-right"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">a</span>&gt;</span>	</div><div class="line">		&#123;% endif %&#125;</div><div class="line">         &#123;% endif %&#125;</div><div class="line">       <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div></pre></td></tr></table></figure><br>You just need to have a glance at codes, you will find how it works. I am not familiar with language <code>SWIG</code>. So I don’t know how to write for loop in that language.</p>
+<p><em>now the pages looks very nice, the only problem is that we do not have a homepage in other language</em></p>
+<h1 id="Add-the-homepage"><a href="#Add-the-homepage" class="headerlink" title="Add the homepage"></a>Add the homepage</h1><h2 id="Change-links-on-menu"><a href="#Change-links-on-menu" class="headerlink" title="Change links on menu"></a>Change links on menu</h2><p>Open <code>\themes\next\_config.yml</code>, add the language name before each links of menu and add a item to change the language. My code is below:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">home: /zh-cn/ </div><div class="line">categories: /zh-cn/categories</div><div class="line">about: /zh-cn/about</div><div class="line">archives: /zh-cn/archives</div><div class="line">tags: /zh-cn/tags</div><div class="line">lang: /</div></pre></td></tr></table></figure></p>
+<h2 id="Generate-other-language-pages"><a href="#Generate-other-language-pages" class="headerlink" title="Generate other language pages"></a>Generate other language pages</h2><p>Set the first choice language into other in <code>_config.yml</code> then <code>hexo g</code> to generate the blog.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+			
+				
+				
+				<a href="/en-us/hdu-1832/" rel="next" title="简单方法实现Hexo中的多语言">
+					<i class="fa fa-chevron-left"></i> HDU-1832
+				</a>
+				
+			
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+				
+				
+					<a href="/en-us/daily9-19-2016/" rel="prev" title="2016年9月18日">
+					26/9/2016 diary <i class="fa fa-chevron-right"></i>
+					</a>	
+					
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Trigon Wu" />
+          <p class="site-author-name" itemprop="name">Trigon Wu</p>
+          <p class="site-description motion-element" itemprop="description">Student in RoseHulman Inst of Tech</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/trigon" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3740215010" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary"><span class="nav-number">1.</span> <span class="nav-text">Summary</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I18N-in-Interface"><span class="nav-number">2.</span> <span class="nav-text">I18N in Interface</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-config-yml"><span class="nav-number">2.1.</span> <span class="nav-text">Change _config.yml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-post"><span class="nav-number">2.2.</span> <span class="nav-text">Change post</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-the-languages-files-under-languages"><span class="nav-number">2.3.</span> <span class="nav-text">Change the languages files under /languages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-the-website-of-tags-and-categories-of-other-languages"><span class="nav-number">2.4.</span> <span class="nav-text">Add the website of tags and categories of other languages</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Only-show-the-posts-in-certain-language"><span class="nav-number">3.</span> <span class="nav-text">Only show the posts in certain language</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-posts-list"><span class="nav-number">3.1.</span> <span class="nav-text">Change posts list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-prev-and-next-of-post"><span class="nav-number">3.2.</span> <span class="nav-text">Change prev and next of post</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Add-the-homepage"><span class="nav-number">4.</span> <span class="nav-text">Add the homepage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Change-links-on-menu"><span class="nav-number">4.1.</span> <span class="nav-text">Change links on menu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generate-other-language-pages"><span class="nav-number">4.2.</span> <span class="nav-text">Generate other language pages</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trigon Wu</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>

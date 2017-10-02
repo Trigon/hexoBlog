@@ -1,0 +1,655 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="吴以伦, trigon, Pascal" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="摘要我们知道,Hexo自带i18n的解决方案,但是那只是对于模板里一些连接,比如首页(home),标签(tags)等等. 如果想要让自己的文章可以分别显示2个版本就没有比较简单的方法了.本文通过修改配置文件,post模板,layout布局文件以及几部手动复制粘贴完成对Hexo的整个多语言化.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单方法实现Hexo中的多语言">
+<meta property="og:url" content="http://trigon.me/zh-cn/finish-i18n/index.html">
+<meta property="og:site_name" content="Trigon's Blog">
+<meta property="og:description" content="摘要我们知道,Hexo自带i18n的解决方案,但是那只是对于模板里一些连接,比如首页(home),标签(tags)等等. 如果想要让自己的文章可以分别显示2个版本就没有比较简单的方法了.本文通过修改配置文件,post模板,layout布局文件以及几部手动复制粘贴完成对Hexo的整个多语言化.">
+<meta property="og:updated_time" content="2016-09-06T01:28:24.149Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单方法实现Hexo中的多语言">
+<meta name="twitter:description" content="摘要我们知道,Hexo自带i18n的解决方案,但是那只是对于模板里一些连接,比如首页(home),标签(tags)等等. 如果想要让自己的文章可以分别显示2个版本就没有比较简单的方法了.本文通过修改配置文件,post模板,layout布局文件以及几部手动复制粘贴完成对Hexo的整个多语言化.">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://trigon.me/zh-cn/finish-i18n/"/>
+
+  <title> 简单方法实现Hexo中的多语言 | Trigon's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn,en-us,default">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Trigon's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">善行,无辙迹. 善言,无瑕谪.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            时间轴
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-lang">
+          <a href="/en-us/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            English Verison
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                简单方法实现Hexo中的多语言
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T20:22:38-04:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">hexo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>我们知道,Hexo自带i18n的解决方案,但是那只是对于模板里一些连接,比如首页(home),标签(tags)等等. 如果想要让自己的文章可以分别显示2个版本就没有比较简单的方法了.<br>本文通过修改配置文件,post模板,layout布局文件以及几部手动复制粘贴完成对Hexo的整个多语言化.<br><a id="more"></a></p>
+<h1 id="界面的多语言"><a href="#界面的多语言" class="headerlink" title="界面的多语言"></a>界面的多语言</h1><h2 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改_config.yml"></a>修改<code>_config.yml</code></h2><p>把<code>language:</code>修改成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">language:</div><div class="line">- 默认语言</div><div class="line">- 语言1</div><div class="line">- 语言2</div><div class="line">...</div></pre></td></tr></table></figure><br>比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">language:</div><div class="line">- zh-cn</div><div class="line">- en-us</div></pre></td></tr></table></figure></p>
+<h2 id="修改post"><a href="#修改post" class="headerlink" title="修改post"></a>修改post</h2><p>打开 <code>/_config.yml</code> 找到 <code>new_post_name</code>,把值修改成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">:lang/:title.md</div></pre></td></tr></table></figure><br>然后每次新建post时,在命令后写 <code>–lang 语言缩写</code> 语言缩写就和languages里的文件名相同即可. 这样post的地址就是<code>语言缩写/文章title</code>了. 这么做的目的主要是使得hexo生成时可以检测到地址里的语言缩写然后实行界面多语言转换.<br><em>现在我们已经可以实现点开英文文章界面显示英文,点开中文文章界面显示中文了</em></p>
+<h2 id="修改-languages下的语言文件"><a href="#修改-languages下的语言文件" class="headerlink" title="修改/languages下的语言文件"></a>修改<code>/languages</code>下的语言文件</h2><p>虽然界面大部分是英文了,但是对于简介等sidebar里的内容还是中文,这时候我们需要修改其他语言的yml文件.<br><em>下面以Next主题为例,语言文件为<code>en-us</code></em><br>Next主题里的subtitle默认引用<code>_config.yml</code>里的subtitle. 打开<code>\themes\next\layout_partials\header.swig</code> 找到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;p class=&quot;site-subtitle&quot;&gt;  </div></pre></td></tr></table></figure> 把后面大括号里的值修改成<code>__(‘sidebar.sub’)</code><br>然后在语言文件里的<code>sidebar</code>下添加<code>sub</code>,值填写对应语言下的subtitle就可以了. 网站名称等也可以用同样方法替换.<br><em>现在界面里已经能完全显示多语言了,下面就是对<code>layout</code>修改实现只显示一种语言.</em></p>
+<h2 id="添加英文的分类-标签"><a href="#添加英文的分类-标签" class="headerlink" title="添加英文的分类,标签"></a>添加英文的分类,标签</h2><p>这个比较简单,在source下新建对应的语言缩写文件夹,把source下的<code>categories</code>和<code>tags</code>复制进去就可以了.<br><em>归档和首页不一样,这个方法是不行的</em></p>
+<h1 id="只显示同一种语言的文章"><a href="#只显示同一种语言的文章" class="headerlink" title="只显示同一种语言的文章"></a>只显示同一种语言的文章</h1><p><em>这段我的处理方法很蠢, 如果有人有更好的方法烦请通过sidebar的联系方式告诉我, 谢谢!</em><br><em>我用Next主题为例,其他主题可能会不一样.</em></p>
+<h2 id="修改文章列表"><a href="#修改文章列表" class="headerlink" title="修改文章列表"></a>修改文章列表</h2><p>打开使用的<code>theme</code>里layout下的<code>index.swig</code><br>找到<code>block content</code>下的一个for循环,在<code>post_template.render(post, true)</code>之前添加一个if语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% if post.lang === &apos;zh-cn&apos; %&#125;  </div></pre></td></tr></table></figure><br>这样就是只显示<code>lang</code>是zh-cn的文章了.<br>我们先把这个改成en-us</p>
+<p>为什么说这个方法很蠢呢, 因为不知道为什么除了生成的主页, 自己建的index都访问不到page.posts, 所以只能通过修改这个值,生成多个语言的index.html<br>QAQ 这也没办法啊! 有人会的话告诉我啊!</p>
+<h2 id="修改文章的上下篇"><a href="#修改文章的上下篇" class="headerlink" title="修改文章的上下篇"></a>修改文章的上下篇</h2><p>打开<code>\themes\next\layout\_macro\post.swig</code> 找到<code>&lt;div class="post-nav"&gt;  大约215行</code> 改成<br><figure class="highlight html"><figcaption><span>post.swig</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-nav"</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-nav-next post-nav-item"</span>&gt;</span></div><div class="line">&#123;% if post.next and post.next.lang === post.lang %&#125;</div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for(post.next.path) &#125;&#125;"</span> <span class="attr">rel</span>=<span class="string">"next"</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; post.next.title &#125;&#125;"</span>&gt;</span></div><div class="line">             <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-chevron-left"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> &#123;&#123; post.next.title &#125;&#125;</div><div class="line">           <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span> &#123;&#123;post.lang&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">&#123;% else %&#125;</div><div class="line">	&#123;% set next_post = post.next %&#125;</div><div class="line">	&#123;% if next_post.next and next_post.next.lang === post.lang  %&#125;</div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for(next_post.next.path) &#125;&#125;"</span> <span class="attr">rel</span>=<span class="string">"next"</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; post.next.title &#125;&#125;"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-chevron-left"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span> &#123;&#123; next_post.next.title &#125;&#125;</div><div class="line">	<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">	&#123;% endif %&#125;</div><div class="line">&#123;% endif %&#125;</div><div class="line">       <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">       <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-nav-prev post-nav-item"</span>&gt;</span></div><div class="line">         &#123;% if post.prev and post.prev.lang === post.lang %&#125;</div><div class="line">           <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for(post.prev.path) &#125;&#125;"</span> <span class="attr">rel</span>=<span class="string">"prev"</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; post.prev.title &#125;&#125;"</span>&gt;</span></div><div class="line">             &#123;&#123;post.prev.title&#125;&#125; <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-chevron-right"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">           <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">&#123;% else %&#125;</div><div class="line">	&#123;% set prev_post = post.prev %&#125;</div><div class="line">	&#123;% if prev_post.prev and prev_post.prev.lang === post.lang %&#125;</div><div class="line">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for(prev_post.prev.path) &#125;&#125;"</span> <span class="attr">rel</span>=<span class="string">"prev"</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; post.prev.title &#125;&#125;"</span>&gt;</span></div><div class="line">		&#123;&#123;prev_post.prev.title&#125;&#125; <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-chevron-right"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">a</span>&gt;</span>	</div><div class="line">		&#123;% endif %&#125;</div><div class="line">         &#123;% endif %&#125;</div><div class="line">       <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">     <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div></pre></td></tr></table></figure><br>大家看一下应该就懂了,因为swig我不太会,好想没有while循环,就这么写了,如果是中英交替发的应该问题不是很大,后面有时间会把这段代码写的正常一点.<br><em>现在界面看上去已经很好了,但是有一个很重要的问题就是没有英文的主页</em></p>
+<h1 id="手动土又蠢添加首页"><a href="#手动土又蠢添加首页" class="headerlink" title="手动土又蠢添加首页!"></a>手动土又蠢添加首页!</h1><h2 id="修改menu链接"><a href="#修改menu链接" class="headerlink" title="修改menu链接"></a>修改menu链接</h2><p>打开<code>\themes\next\_config.yml</code>在menu里把各个项的连接前都加上其他的语言缩写,并且在最后加一个换语言的按钮,比如我的:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">home: /en-us/ </div><div class="line">categories: /en-us/categories</div><div class="line">about: /en-us/about</div><div class="line">archives: /en-us/archives</div><div class="line">tags: /en-us/tags</div><div class="line">lang: /</div></pre></td></tr></table></figure></p>
+<h2 id="生成其他语言页面"><a href="#生成其他语言页面" class="headerlink" title="生成其他语言页面"></a>生成其他语言页面</h2><p>在<code>_config.yml</code>里把<code>en-us</code>换成第一个语言, <code>hexo g</code>生成英语主要语言的页面.<br>把<code>/public/index.html</code>和<code>/public/archives</code>文件夹复制到<code>/source/en-us</code>下<br>并且在2个html文件最前面加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">layout: false</div><div class="line">---</div></pre></td></tr></table></figure><br>然后把<code>menu</code> <code>_config.yml</code>还有<code>theme</code>里layout下的<code>index.swig</code>设置改成原来的, 再次生成网站就可以了</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+			
+				
+				
+				<a href="/zh-cn/hdu-1832/" rel="next" title="HDU-1832">
+					<i class="fa fa-chevron-left"></i> HDU-1832
+				</a>
+				
+			
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+				
+				
+					<a href="/zh-cn/daily9-19-2016/" rel="prev" title="A simple way realize multi-language in Hexo">
+					2016年9月18日 <i class="fa fa-chevron-right"></i>
+					</a>	
+					
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Trigon Wu" />
+          <p class="site-author-name" itemprop="name">Trigon Wu</p>
+          <p class="site-description motion-element" itemprop="description">RoseHulman理工在读</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/trigon" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3740215010" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#界面的多语言"><span class="nav-number">2.</span> <span class="nav-text">界面的多语言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-config-yml"><span class="nav-number">2.1.</span> <span class="nav-text">修改_config.yml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改post"><span class="nav-number">2.2.</span> <span class="nav-text">修改post</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改-languages下的语言文件"><span class="nav-number">2.3.</span> <span class="nav-text">修改/languages下的语言文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加英文的分类-标签"><span class="nav-number">2.4.</span> <span class="nav-text">添加英文的分类,标签</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#只显示同一种语言的文章"><span class="nav-number">3.</span> <span class="nav-text">只显示同一种语言的文章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文章列表"><span class="nav-number">3.1.</span> <span class="nav-text">修改文章列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改文章的上下篇"><span class="nav-number">3.2.</span> <span class="nav-text">修改文章的上下篇</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#手动土又蠢添加首页"><span class="nav-number">4.</span> <span class="nav-text">手动土又蠢添加首页!</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改menu链接"><span class="nav-number">4.1.</span> <span class="nav-text">修改menu链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成其他语言页面"><span class="nav-number">4.2.</span> <span class="nav-text">生成其他语言页面</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Trigon Wu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+<script type="text/javascript" async src="//push.zhanzhang.baidu.com/push.js">
+</script>
+
+
+</body>
+</html>
